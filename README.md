@@ -1,10 +1,9 @@
-# LyricGenius
+# LyricalGenius
 It like having a Music Genius in a touch of a button.
 
-LyricGenius is a music genre finding application.
+LyricalGenius is a music genre finding application.
 
 ## Usage
-
 Download the repo and run index.html
 
 ## Contributing
