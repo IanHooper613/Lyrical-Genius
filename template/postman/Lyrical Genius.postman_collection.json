@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "c2ce08ea-c4c3-4d7b-89aa-3048d0fb19cc",
+		"name": "Lyrical Genius",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Lyrics",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://orion.apiseeds.com/api/music/lyric/:artist/:track?apikey=",
+					"protocol": "https",
+					"host": [
+						"orion",
+						"apiseeds",
+						"com"
+					],
+					"path": [
+						"api",
+						"music",
+						"lyric",
+						":artist",
+						":track"
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": ""
+						}
+					],
+					"variable": [
+						{
+							"key": "artist",
+							"value": "Post Malone"
+						},
+						{
+							"key": "track",
+							"value": "Rockstar"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Genre Discog",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "LyricalGenius",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.discogs.com/database/search?genre=Hip Hop&per_page=10&page=1&key&secret",
+					"protocol": "https",
+					"host": [
+						"api",
+						"discogs",
+						"com"
+					],
+					"path": [
+						"database",
+						"search"
+					],
+					"query": [
+						{
+							"key": "genre",
+							"value": "Hip Hop"
+						},
+						{
+							"key": "per_page",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "key",
+							"value": null
+						},
+						{
+							"key": "secret",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d327aae8-8109-47ba-9fc2-e0dd52bcc904",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2f4e2554-9379-4701-ba4b-b3815491d7db",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
