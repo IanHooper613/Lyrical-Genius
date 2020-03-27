@@ -29,8 +29,7 @@
   height: 400px;
   display: flex;
   justify-content: center;
-  background: black;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+  background: #000;
 }
 
 .modal-cover:after {
