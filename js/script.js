@@ -41,9 +41,6 @@ function fetchLyricData(artist, track) {
     .catch(error => console.log("error", error));
 }
 
-console.log(fetchDiscogsData("Hip Hop"));
-console.log(fetchLyricData("Post Malone", "rockstar"));
-
 // Modal
 function toggleModal(element) {
   document.documentElement.classList.toggle("is-clipped");
