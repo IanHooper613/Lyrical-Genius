@@ -1,3 +1,11 @@
+.footer {
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    margin-top: 10px;
+    width: 100%;
+  }
+
 .modal-card-subtitle {
   position: absolute;
   left: 0;
