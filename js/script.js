@@ -43,3 +43,23 @@ function fetchLyricData(artist, track) {
 
 console.log(fetchDiscogsData("Hip Hop"));
 console.log(fetchLyricData("Post Malone", "rockstar"));
+
+// Modal
+function toggleModal(element) {
+  document.documentElement.classList.toggle("is-clipped");
+  element.classList.toggle("is-active");
+}
+
+// Close Events
+document.querySelectorAll(".modal-background, .modal-close", ".close").forEach(function(el) {
+  el.addEventListener("click", function() {
+    toggleModal(musicModal);
+  });
+});
+
+const musicModal = document.getElementById("music-modal");
+const musicBtn = document.getElementById("music-modalBtn")
+
+musicBtn.addEventListener("click", function() {
+  toggleModal(musicModal);
+});
