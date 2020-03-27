@@ -63,3 +63,11 @@ const musicBtn = document.getElementById("music-modalBtn")
 musicBtn.addEventListener("click", function() {
   toggleModal(musicModal);
 });
+
+function updateModal(track, artist, image) {
+  const musicCoverArt = document.getElementById("modal-cover-art");
+  const musicArtistImage = document.getElementById("modal-artist-image");
+  const musicTrack = document.getElementById("modal-track");
+  const musicTrack = document.getElementById("modal-track");
+  const musicArtist = document.getElementById("modal-artist");
+}
