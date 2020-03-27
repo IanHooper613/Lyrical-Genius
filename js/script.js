@@ -1,7 +1,6 @@
-const DISCOGS_KEY = "TwyCggwPpiEBbWtlRqtO";
-const DISCOGS_SECRET = "dJyxJpRgpfQZEDYXTcefbxebMahziUUN";
-const APISEEDS_APIKEY =
-  "xRcHqoqt0DBCmxCKucnYZ7WvmOHMIlkLEcfoCZnqiCFbUXoADEypBn3GITKx531b";
+const DISCOGS_KEY = "WcMjRDILhXjDbHNvwBEm";
+const DISCOGS_SECRET = "MINCKyoSTDujDzWieMQiGeAGOBcEQspu";
+const APISEEDS_APIKEY = "ZmB4cTfin1kKUiOgRkoscUXp54GfiVyYe9xCnWhemaOBiQdVors5y17cZmKq36sU";
 
 const DISCOGS_QUERYURL = (genre, key, secret) =>
   `https://api.discogs.com/database/search?genre=${genre}&per_page=10&page=1&key=${key}&secret=${secret}`;
@@ -63,3 +62,22 @@ const musicBtn = document.getElementById("music-modalBtn")
 musicBtn.addEventListener("click", function() {
   toggleModal(musicModal);
 });
+
+
+let enterSearch = document.getElementById("search-input")
+const form = document.getElementById("search-form")
+form.addEventListener("submit", function(event) {
+  event.preventDefault()
+
+fetchDiscogsData (enterSearch.value).then(function(data) {
+  //console.log(data.results)
+
+  const newform = data.results
+  newform.forEach(element => {
+    console.log(element)
+    
+  });
+  
+})
+})
+   
