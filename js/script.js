@@ -1,7 +1,7 @@
-const DISCOGS_KEY = "TwyCggwPpiEBbWtlRqtO";
-const DISCOGS_SECRET = "dJyxJpRgpfQZEDYXTcefbxebMahziUUN";
+const DISCOGS_KEY = "lmHMrXMWZaAtkzwgalXl";
+const DISCOGS_SECRET = "drPXsLZeQZHAOgmmAULbfLWonoevPqzEn";
 const APISEEDS_APIKEY =
-  "xRcHqoqt0DBCmxCKucnYZ7WvmOHMIlkLEcfoCZnqiCFbUXoADEypBn3GITKx531b";
+  "WXsdZU05A1HmmgWlFxeEyaRjlYYp2wvpm3gjAwV3TQjaRJ2oHXcdjTg2rBPBh1a9";
 
 const DISCOGS_QUERYURL = (genre, key, secret) =>
   `https://api.discogs.com/database/search?genre=${genre}&per_page=10&page=1&key=${key}&secret=${secret}`;
@@ -35,7 +35,10 @@ function fetchLyricData(artist, track) {
     redirect: "follow"
   };
 
-  return fetch(APISEEDS_QUERYURL(artist, track, APISEEDS_APIKEY), requestOptions)
+  return fetch(
+    APISEEDS_QUERYURL(artist, track, APISEEDS_APIKEY),
+    requestOptions
+  )
     .then(response => response.text())
     .then(result => result)
     .catch(error => console.log("error", error));
@@ -51,15 +54,45 @@ function toggleModal(element) {
 }
 
 // Close Events
-document.querySelectorAll(".modal-background, .modal-close", ".close").forEach(function(el) {
-  el.addEventListener("click", function() {
-    toggleModal(musicModal);
+document
+  .querySelectorAll(".modal-background, .modal-close", ".close")
+  .forEach(function(el) {
+    el.addEventListener("click", function() {
+      toggleModal(musicModal);
+    });
   });
-});
 
 const musicModal = document.getElementById("music-modal");
-const musicBtn = document.getElementById("music-modalBtn")
+const musicBtn = document.getElementById("music-modalBtn");
 
 musicBtn.addEventListener("click", function() {
   toggleModal(musicModal);
 });
+
+function createRow(track, artist, coverArt, artistArt) {
+  let box = document.createElement("div");
+
+  box.className = "box has-background-black has-text-white";
+
+  let content = ` <article class="media">
+  <div class="media-left">
+    <figure class="image is-96x96">
+      <img src="${coverArt}" class="is-rounded" alt="Image">
+    </figure>
+
+  </div>
+  <div class="media-content">
+    <h5 class="trackName">${track}</h5>
+    <br>
+    <h5 class="artistName">${artist}</h5>
+  </div>
+
+  <figure class="image is-128x128">
+    <img src="${artistArt}" class="" alt="Image">
+  </figure>`;
+
+  box.innerHTML = content;
+  rows.appendChild(box);
+}
+
+document.getElementById("searchBtn").addEventListener("click", createRow);
