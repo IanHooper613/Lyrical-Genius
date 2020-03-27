@@ -60,10 +60,22 @@ musicBtn.addEventListener("click", function() {
   toggleModal(musicModal);
 });
 
-function updateModal(track, artist, image) {
+// updateModal take a track name, artist name, cover art image url. and artist image url as arguments
+// NOTICE: Call toggleModal AFTER you update the modal
+function updateModal(track, artist, coverArt, artistImage) {
   const musicCoverArt = document.getElementById("modal-cover-art");
   const musicArtistImage = document.getElementById("modal-artist-image");
   const musicTrack = document.getElementById("modal-track");
-  const musicTrack = document.getElementById("modal-track");
   const musicArtist = document.getElementById("modal-artist");
+  const musicLyrics = document.getElementById("music-lyrics");
+
+  musicCoverArt.setAttribute("src", coverArt || "");
+  musicArtistImage.setAttribute("src", artistImage || "");
+  musicTrack.textContent = track || "Failed to get track name";
+  musicArtist.textContent = artist || "Failed to get artist name";
+
+  fetchLyricData(artist, track)
+    .then(data => {
+      musicLyrics.innerText = data.result.track.text || "No Lyrics Found.";
+    })
 }
