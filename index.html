@@ -21,16 +21,16 @@
   </nav>
 
   <br>
-  <div class="container">
+  <div class="container" id="rows">
     <div class="columns is-mobile">
       <div class="column   is-three-fifths is-offset-one-fifth">
         <div class="field">
           <label class="label">Search a Genre:</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="e.g Rock">
+          <form class="control" id="search-form">
+            <input class="input" id="search-input" type="text" placeholder="e.g Rock">
             <button class="button is-dark is-pulled-right">Submit</button>
             <button id="music-modalBtn" class="button is-primary">Music Modal</button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
@@ -101,15 +101,17 @@
             Lyrics
           </h2>
           <div class="content" id="music-lyrics">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae accusamus ducimus perferendis beatae! Quod, voluptatum laudantium! Mollitia voluptatem rerum ea distinctio tempore neque libero eligendi deserunt blanditiis soluta. Sed, officia.
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae accusamus ducimus perferendis beatae!
+            Quod, voluptatum laudantium! Mollitia voluptatem rerum ea distinctio tempore neque libero eligendi deserunt
+            blanditiis soluta. Sed, officia.
           </div>
         </div>
         <button class="modal-close modal-music-close is-large" aria-label="close"></button>
       </div>
     </div>
   </div>
-  </body>
+</body>
 
-  <script src="js/script.js"></script>
+<script src="js/script.js"></script>
 
-  </html>
+</html>
