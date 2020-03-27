@@ -70,7 +70,7 @@ musicBtn.addEventListener("click", function() {
 });
 
 function createRow(track, artist, coverArt, artistArt) {
-  let box = document.createElement("div");
+  const box = document.createElement("div");
 
   box.className = "box has-background-black has-text-white";
 
@@ -92,7 +92,6 @@ function createRow(track, artist, coverArt, artistArt) {
   </figure>`;
 
   box.innerHTML = content;
+  ("");
   rows.appendChild(box);
 }
-
-document.getElementById("searchBtn").addEventListener("click", createRow);
