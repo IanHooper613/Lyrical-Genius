@@ -91,7 +91,5 @@ function createRow(track, artist, coverArt, artistArt) {
     <img src="${artistArt}" class="" alt="Image">
   </figure>`;
 
-  box.innerHTML = content;
-  ("");
   rows.appendChild(box);
 }
