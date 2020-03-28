@@ -57,12 +57,6 @@ document
   });
 
 const musicModal = document.getElementById("music-modal");
-const musicBtn = document.getElementById("music-modalBtn");
-
-musicBtn.addEventListener("click", function() {
-  toggleModal(musicModal);
-});
-
 
 // updateModal take a track name, artist name, cover art image url. and artist image url as arguments
 // NOTICE: Call toggleModal AFTER you update the modal
