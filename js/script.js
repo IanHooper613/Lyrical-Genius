@@ -69,7 +69,6 @@ function updateModal(track, artist, coverArt) {
 
   fetchLyricData(artist, track)
     .then((data) => {
-      console.log(data)
       if (data.error) {
         musicLyrics.innerText = 'No Lyrics Found.';
       } else {
