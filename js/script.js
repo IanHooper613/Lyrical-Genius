@@ -67,23 +67,16 @@ function updateModal(track, artist, coverArt, artistImage) {
     })
 }
 
-// This create all the row and take a track year, coverArt, artistArt
-function createRow(track, year, coverArt, artistArt) {
+// This create all the row and take a track year, coverArt
+function createRow(track, year, coverArt) {
   const box = document.createElement('div');
 
   box.className = 'box has-background-dark has-text-white';
   box.setAttribute('data-track', track);
   box.setAttribute('data-year', year);
   box.setAttribute('data-coverArt', coverArt);
-  box.setAttribute('data-artistArt', artistArt);
 
   const content = ` <article class="media">
-  <div class="media-left">
-    <figure class="image is-96x96">
-      <img src="${artistArt}" class="is-rounded" alt="Image">
-    </figure>
-
-  </div>
   <div class="media-content">
     <h5 class="trackName">${track}</h5>
     <br>
@@ -122,9 +115,8 @@ form.addEventListener('submit', function (event) {
       const track = element.title;
       const year = element.year;
       const coverArt = element.cover_image;
-      const artistArt = element.thumb;
 
-      createRow(track, year, coverArt, artistArt);
+      createRow(track, year, coverArt);
     });
   });
 });
