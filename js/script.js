@@ -61,14 +61,20 @@ function emptyChildNode(el) {
 
 // updateModal take a track name, artist name, cover art image url. and artist image url as arguments
 // NOTICE: Call toggleModal AFTER you update the modal
-function updateModal(track, artist, coverArt, artistImage) {
+function updateModal(track, artist, coverArt) {
+  musicLyrics.innerText = '';
   musicCoverArt.setAttribute('src', coverArt || '');
   musicTrack.textContent = track || 'Failed to get track name';
   musicArtist.textContent = artist || 'Failed to get artist name';
 
   fetchLyricData(artist, track)
     .then((data) => {
-      musicLyrics.innerText = data.result.track.text || 'No Lyrics Found.';
+      console.log(data)
+      if (data.error) {
+        musicLyrics.innerText = 'No Lyrics Found.';
+      } else {
+        musicLyrics.innerText = data.result.track.text;
+      }
     })
 }
 
