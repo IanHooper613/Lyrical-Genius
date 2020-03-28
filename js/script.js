@@ -85,12 +85,8 @@ form.addEventListener("submit", function(event) {
   event.preventDefault();
 
   fetchDiscogsData(enterSearch.value).then(function(data) {
-    //console.log(data.results)
-
     const newform = data.results;
     newform.forEach(element => {
-      console.log(element);
-
       createRow();
       function createRow(track, year, coverArt, artistArt) {
         const box = document.createElement("div");
@@ -101,6 +97,10 @@ form.addEventListener("submit", function(event) {
         artistArt = element.thumb;
 
         box.className = "box has-background-black has-text-white";
+        box.setAttribute('data-track', track);
+        box.setAttribute('data-year', year);
+        box.setAttribute('data-coverArt', coverArt);
+        box.setAttribute('data-artistArt', artistArt);
 
         let content = ` <article class="media">
         <div class="media-left">
@@ -121,6 +121,7 @@ form.addEventListener("submit", function(event) {
 
         box.innerHTML = content;
         box.addEventListener("click", function() {
+          updateModal(this.getAttribute('data-track'), this.getAttribute('data-year'), this.getAttribute('data-coverArt'), this.getAttribute('data-artistArt'))
           toggleModal(musicModal);
         });
 
