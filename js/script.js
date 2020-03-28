@@ -15,12 +15,12 @@ function fetchDiscogsData(genre) {
   const requestOptions = {
     method: 'GET',
     headers: Header,
-    redirect: 'follow'
+    redirect: 'follow',
   };
 
   return fetch(
     DISCOGS_QUERYURL(genre, DISCOGS_KEY, DISCOGS_SECRET),
-    requestOptions
+    requestOptions,
   )
     .then((response) => response.json())
     .then((result) => result)
@@ -30,7 +30,7 @@ function fetchDiscogsData(genre) {
 function fetchLyricData(artist, track) {
   const requestOptions = {
     method: 'GET',
-    redirect: 'follow'
+    redirect: 'follow',
   };
 
 
