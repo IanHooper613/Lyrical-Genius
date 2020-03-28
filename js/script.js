@@ -7,6 +7,14 @@ const DISCOGS_QUERYURL = (genre, key, secret) => `https://api.discogs.com/databa
 const APISEEDS_QUERYURL = (artist, track, apikey) => `https://orion.apiseeds.com/api/music/lyric/${artist}/${track}?apikey=${apikey}`;
 
 const rows = document.getElementById('rows');
+const searchInput = document.getElementById('search-input');
+const form = document.getElementById('search-form');
+const musicModal = document.getElementById('music-modal');
+const musicCoverArt = document.getElementById('modal-cover-art');
+const musicArtistImage = document.getElementById('modal-artist-image');
+const musicTrack = document.getElementById('modal-track');
+const musicArtist = document.getElementById('modal-artist');
+const musicLyrics = document.getElementById('music-lyrics');
 
 function fetchDiscogsData(genre) {
   // We have to append a user-agent as describe in Discogs API Documents
@@ -47,17 +55,9 @@ function toggleModal(element) {
   element.classList.toggle('is-active');
 }
 
-const musicModal = document.getElementById('music-modal');
-
 // updateModal take a track name, artist name, cover art image url. and artist image url as arguments
 // NOTICE: Call toggleModal AFTER you update the modal
 function updateModal(track, artist, coverArt, artistImage) {
-  const musicCoverArt = document.getElementById('modal-cover-art');
-  const musicArtistImage = document.getElementById('modal-artist-image');
-  const musicTrack = document.getElementById('modal-track');
-  const musicArtist = document.getElementById('modal-artist');
-  const musicLyrics = document.getElementById('music-lyrics');
-
   musicCoverArt.setAttribute('src', coverArt || '');
   musicArtistImage.setAttribute('src', artistImage || '');
   musicTrack.textContent = track || 'Failed to get track name';
@@ -112,9 +112,6 @@ document
       toggleModal(musicModal);
     });
   });
-
-const searchInput = document.getElementById('search-input');
-const form = document.getElementById('search-form');
 
 form.addEventListener('submit', function (event) {
   event.preventDefault();
