@@ -36,7 +36,7 @@ function fetchLyricData(artist, track) {
 
   return fetch(APISEEDS_QUERYURL(artist, track, APISEEDS_APIKEY), requestOptions)
     .then((response) => response.json())
-    .catch((error) => console.log('error', error));
+    .catch((error) => console.error(error));
 }
 
 // Modal
