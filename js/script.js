@@ -119,8 +119,8 @@ form.addEventListener('submit', function (event) {
   event.preventDefault();
 
   fetchDiscogsData(searchInput.value).then(function (data) {
-    const newform = data.results;
-    newform.forEach((element) => {
+    const discogData = data.results;
+    discogData.forEach((element) => {
       const track = element.title;
       const year = element.year;
       const coverArt = element.cover_image;
