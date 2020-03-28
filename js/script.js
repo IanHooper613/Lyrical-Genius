@@ -11,7 +11,6 @@ const searchInput = document.getElementById('search-input');
 const form = document.getElementById('search-form');
 const musicModal = document.getElementById('music-modal');
 const musicCoverArt = document.getElementById('modal-cover-art');
-const musicArtistImage = document.getElementById('modal-artist-image');
 const musicTrack = document.getElementById('modal-track');
 const musicArtist = document.getElementById('modal-artist');
 const musicLyrics = document.getElementById('music-lyrics');
@@ -57,7 +56,6 @@ function toggleModal(element) {
 // NOTICE: Call toggleModal AFTER you update the modal
 function updateModal(track, artist, coverArt, artistImage) {
   musicCoverArt.setAttribute('src', coverArt || '');
-  musicArtistImage.setAttribute('src', artistImage || '');
   musicTrack.textContent = track || 'Failed to get track name';
   musicArtist.textContent = artist || 'Failed to get artist name';
 
@@ -67,32 +65,24 @@ function updateModal(track, artist, coverArt, artistImage) {
     })
 }
 
-// This create all the row and take a track year, coverArt, artistArt
-function createRow(track, year, coverArt, artistArt) {
+// This create all the row and take a track year, coverArt
+function createRow(track, year, coverArt) {
   const box = document.createElement('div');
 
-  box.className = 'box has-background-black has-text-white';
+  box.className = 'box has-background-dark has-text-white';
   box.setAttribute('data-track', track);
   box.setAttribute('data-year', year);
   box.setAttribute('data-coverArt', coverArt);
-  box.setAttribute('data-artistArt', artistArt);
 
   const content = ` <article class="media">
-  <div class="media-left">
-    <figure class="image is-96x96">
-      <img src="${artistArt}" class="is-rounded" alt="Image">
-    </figure>
-
-  </div>
-  <div class="media-content">
-    <h5 class="trackName">${track}</h5>
-    <br>
-    <h5 class="artistName">${year}</h5>
-  </div>
-
-  <figure class="image is-128x128">
+  <figure class="media-left image is-128x128">
     <img src="${coverArt}" class="" alt="Image">
-  </figure>`;
+  </figure>
+  <div class="media-content">
+    <h2 class="trackName title has-text-white is-4">${track}</h2>
+    <h3 class="artistName subtitle has-text-white">${year}</h3>
+  </div>
+  </article>`;
 
   box.innerHTML = content;
   box.addEventListener('click', function () {
@@ -122,9 +112,8 @@ form.addEventListener('submit', function (event) {
       const track = element.title;
       const year = element.year;
       const coverArt = element.cover_image;
-      const artistArt = element.thumb;
 
-      createRow(track, year, coverArt, artistArt);
+      createRow(track, year, coverArt);
     });
   });
 });
