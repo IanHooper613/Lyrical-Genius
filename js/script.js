@@ -69,15 +69,6 @@ function updateModal(track, artist, coverArt, artistImage) {
     })
 }
 
-// Close Events
-document
-  .querySelectorAll('.modal-background, .modal-close', '.close')
-  .forEach(function (el) {
-    el.addEventListener('click', function () {
-      toggleModal(musicModal);
-    });
-  });
-
 function createRow(track, year, coverArt, artistArt) {
   const box = document.createElement('div');
 
@@ -112,6 +103,15 @@ function createRow(track, year, coverArt, artistArt) {
 
   rows.appendChild(box);
 }
+
+// Close Events
+document
+  .querySelectorAll('.modal-background, .modal-close', '.close')
+  .forEach(function (el) {
+    el.addEventListener('click', function () {
+      toggleModal(musicModal);
+    });
+  });
 
 const searchInput = document.getElementById('search-input');
 const form = document.getElementById('search-form');
