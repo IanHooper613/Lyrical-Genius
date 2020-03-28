@@ -7,7 +7,6 @@ const DISCOGS_QUERYURL = (genre, key, secret) =>
   `https://api.discogs.com/database/search?genre=${genre}&per_page=10&page=1&key=${key}&secret=${secret}`;
 const APISEEDS_QUERYURL = (artist, track, apikey) =>
   `https://orion.apiseeds.com/api/music/lyric/${artist}/${track}?apikey=${apikey}`;
-const musicModal = document.getElementById("music-modal");
 
 function fetchDiscogsData(genre) {
   // We have to append a user-agent as describe in Discogs API Documents
@@ -36,17 +35,11 @@ function fetchLyricData(artist, track) {
     redirect: "follow"
   };
 
-  return fetch(
-    APISEEDS_QUERYURL(artist, track, APISEEDS_APIKEY),
-    requestOptions
-  )
-    .then(response => response.text())
-    .then(result => result)
+
+  return fetch(APISEEDS_QUERYURL(artist, track, APISEEDS_APIKEY), requestOptions)
+    .then(response => response.json())
     .catch(error => console.log("error", error));
 }
-
-console.log(fetchDiscogsData("Hip Hop"));
-console.log(fetchLyricData("Post Malone", "rockstar"));
 
 // Modal
 function toggleModal(element) {
@@ -63,18 +56,37 @@ document
     });
   });
 
+const musicModal = document.getElementById("music-modal");
+
+// updateModal take a track name, artist name, cover art image url. and artist image url as arguments
+// NOTICE: Call toggleModal AFTER you update the modal
+function updateModal(track, artist, coverArt, artistImage) {
+  const musicCoverArt = document.getElementById("modal-cover-art");
+  const musicArtistImage = document.getElementById("modal-artist-image");
+  const musicTrack = document.getElementById("modal-track");
+  const musicArtist = document.getElementById("modal-artist");
+  const musicLyrics = document.getElementById("music-lyrics");
+
+  musicCoverArt.setAttribute("src", coverArt || "");
+  musicArtistImage.setAttribute("src", artistImage || "");
+  musicTrack.textContent = track || "Failed to get track name";
+  musicArtist.textContent = artist || "Failed to get artist name";
+
+  fetchLyricData(artist, track)
+    .then(data => {
+      musicLyrics.innerText = data.result.track.text || "No Lyrics Found.";
+    })
+}
+
 let enterSearch = document.getElementById("search-input");
 const form = document.getElementById("search-form");
+
 form.addEventListener("submit", function(event) {
   event.preventDefault();
 
   fetchDiscogsData(enterSearch.value).then(function(data) {
-    //console.log(data.results)
-
     const newform = data.results;
     newform.forEach(element => {
-      console.log(element);
-
       createRow();
       function createRow(track, year, coverArt, artistArt) {
         const box = document.createElement("div");
@@ -85,6 +97,10 @@ form.addEventListener("submit", function(event) {
         artistArt = element.thumb;
 
         box.className = "box has-background-black has-text-white";
+        box.setAttribute('data-track', track);
+        box.setAttribute('data-year', year);
+        box.setAttribute('data-coverArt', coverArt);
+        box.setAttribute('data-artistArt', artistArt);
 
         let content = ` <article class="media">
         <div class="media-left">
@@ -105,6 +121,7 @@ form.addEventListener("submit", function(event) {
 
         box.innerHTML = content;
         box.addEventListener("click", function() {
+          updateModal(this.getAttribute('data-track'), this.getAttribute('data-year'), this.getAttribute('data-coverArt'), this.getAttribute('data-artistArt'))
           toggleModal(musicModal);
         });
 
