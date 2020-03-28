@@ -22,9 +22,9 @@ function fetchDiscogsData(genre) {
     DISCOGS_QUERYURL(genre, DISCOGS_KEY, DISCOGS_SECRET),
     requestOptions
   )
-    .then(response => response.json())
-    .then(result => result)
-    .catch(error => console.error(error));
+    .then((response) => response.json())
+    .then((result) => result)
+    .catch((error) => console.error(error));
 }
 
 function fetchLyricData(artist, track) {
@@ -35,8 +35,8 @@ function fetchLyricData(artist, track) {
 
 
   return fetch(APISEEDS_QUERYURL(artist, track, APISEEDS_APIKEY), requestOptions)
-    .then(response => response.json())
-    .catch(error => console.log('error', error));
+    .then((response) => response.json())
+    .catch((error) => console.log('error', error));
 }
 
 // Modal
@@ -71,7 +71,7 @@ function updateModal(track, artist, coverArt, artistImage) {
   musicArtist.textContent = artist || 'Failed to get artist name';
 
   fetchLyricData(artist, track)
-    .then(data => {
+    .then((data) => {
       musicLyrics.innerText = data.result.track.text || 'No Lyrics Found.';
     })
 }
@@ -118,8 +118,8 @@ form.addEventListener('submit', function(event) {
   event.preventDefault();
 
   fetchDiscogsData(searchInput.value).then(function(data) {
-    const discogData = data.results;
-    discogData.forEach(element => {
+    const newform = data.results;
+    newform.forEach((element) => {
       const track = element.title;
       const year = element.year;
       const coverArt = element.cover_image;
