@@ -77,15 +77,14 @@ function createRow(track, year, coverArt) {
   box.setAttribute('data-coverArt', coverArt);
 
   const content = ` <article class="media">
-  <div class="media-content">
-    <h5 class="trackName">${track}</h5>
-    <br>
-    <h5 class="artistName">${year}</h5>
-  </div>
-
-  <figure class="image is-128x128">
+  <figure class="media-left image is-128x128">
     <img src="${coverArt}" class="" alt="Image">
-  </figure>`;
+  </figure>
+  <div class="media-content">
+    <h2 class="trackName title has-text-white is-4">${track}</h2>
+    <h3 class="artistName subtitle has-text-white">${year}</h3>
+  </div>
+  </article>`;
 
   box.innerHTML = content;
   box.addEventListener('click', function () {

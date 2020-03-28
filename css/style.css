@@ -57,10 +57,3 @@ main {
   height: 400px;
   width: auto;
 }
-
-@media screen and (min-width: 769px), print {
-  .modal-card,
-  .modal-content {
-    width: 80%;
-  }
-}
