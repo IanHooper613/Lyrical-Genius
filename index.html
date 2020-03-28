@@ -1,87 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lyrical Genius</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+      integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lyrical Genius</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
-    integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-  <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <div class="navbar-item">
-        <h1>Lyrical Genius</h1>
-      </div>
-    </div>
-  </nav>
-
-  <br>
-  <div class="container" id="rows">
-    <div class="columns is-mobile">
-      <div class="column   is-three-fifths is-offset-one-fifth">
-        <div class="field">
-          <label class="label">Search a Genre:</label>
-          <form class="control" id="search-form">
-            <input class="input" id="search-input" type="text" placeholder="e.g Rock">
-            <button class="button is-dark is-pulled-right">Submit</button>
-          </form>
+  <body>
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <div class="navbar-item">
+          <h1>Lyrical Genius</h1>
         </div>
       </div>
-    </div>
+    </nav>
 
-
-
-  </div>
-
-  <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        <strong>©Lyrical Genius</strong> by Coulterman, Dinh, and Hooper.
-      </p>
-    </div>
-  </footer>
-
-  <div id="music-modal" class="modal modal-music">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-      <div class="card">
-        <div class="card-image">
-          <figure class="image modal-cover">
-            <img src="https://bulma.io/images/placeholders/1280x960.png" class="modal-cover-art" id="modal-cover-art">
-          </figure>
-          <div class="media modal-card-subtitle">
-            <div class="media-left">
-              <figure class="image is-48x48">
-                <img src="https://bulma.io/images/placeholders/96x96.png" id="modal-artist-image">
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title has-text-white is-4" id="modal-track">Track Name</p>
-              <p class="subtitle has-text-grey-lighter is-6" id="modal-artist">Artist Name</p>
-            </div>
+    <br />
+    <div class="container" id="rows">
+      <div class="columns is-mobile">
+        <div class="column   is-three-fifths is-offset-one-fifth">
+          <div class="field">
+            <label class="label">Search a Genre:</label>
+            <form class="control" id="search-form">
+              <input
+                class="input"
+                id="search-input"
+                type="text"
+                placeholder="e.g Rock"
+              />
+              <button class="button is-dark is-pulled-right">Submit</button>
+            </form>
           </div>
         </div>
-        <div class="card-content">
-          <h2 class="title is-5">
-            Lyrics
-          </h2>
-          <div class="content" id="music-lyrics">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae accusamus ducimus perferendis beatae!
-            Quod, voluptatum laudantium! Mollitia voluptatem rerum ea distinctio tempore neque libero eligendi deserunt
-            blanditiis soluta. Sed, officia.
-          </div>
-        </div>
-        <button class="modal-close modal-music-close is-large" aria-label="close"></button>
       </div>
     </div>
-  </div>
-</body>
 
-<script src="js/script.js"></script>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p><strong>©Lyrical Genius</strong> by Coulterman, Dinh, and Hooper.</p>
+      </div>
+    </footer>
 
+    <div id="music-modal" class="modal modal-music">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image modal-cover">
+              <img
+                src="https://bulma.io/images/placeholders/1280x960.png"
+                class="modal-cover-art"
+                id="modal-cover-art"
+              />
+            </figure>
+            <div class="media modal-card-subtitle">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img
+                    src="https://bulma.io/images/placeholders/96x96.png"
+                    id="modal-artist-image"
+                  />
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title has-text-white is-4" id="modal-track">
+                  Track Name
+                </p>
+                <p
+                  class="subtitle has-text-grey-lighter is-6"
+                  id="modal-artist"
+                >
+                  Artist Name
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <h2 class="title is-5">
+              Lyrics
+            </h2>
+            <div class="content" id="music-lyrics">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Recusandae accusamus ducimus perferendis beatae! Quod, voluptatum
+              laudantium! Mollitia voluptatem rerum ea distinctio tempore neque
+              libero eligendi deserunt blanditiis soluta. Sed, officia.
+            </div>
+          </div>
+          <button
+            class="modal-close modal-music-close is-large"
+            aria-label="close"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="js/script.js"></script>
 </html>
