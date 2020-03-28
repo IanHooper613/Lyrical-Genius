@@ -69,33 +69,6 @@ musicBtn.addEventListener("click", function() {
   toggleModal(musicModal);
 });
 
-function createRow(track, artist, coverArt, artistArt) {
-  const box = document.createElement("div");
-
-  box.className = "box has-background-black has-text-white";
-
-  let content = ` <article class="media">
-  <div class="media-left">
-    <figure class="image is-96x96">
-      <img src="${coverArt}" class="is-rounded" alt="Image">
-    </figure>
-
-  </div>
-  <div class="media-content">
-    <h5 class="trackName">${ele.title}</h5>
-    <br>
-    <h5 class="artistName">${artist}</h5>
-  </div>
-
-  <figure class="image is-128x128">
-    <img src="${artistArt}" class="" alt="Image">
-  </figure>`;
-
-  box.innerHTML = content;
-
-  rows.appendChild(box);
-}
-
 let enterSearch = document.getElementById("search-input");
 const form = document.getElementById("search-form");
 form.addEventListener("submit", function(event) {
