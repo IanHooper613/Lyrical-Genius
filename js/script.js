@@ -45,15 +45,6 @@ function toggleModal(element) {
   element.classList.toggle('is-active');
 }
 
-// Close Events
-document
-  .querySelectorAll('.modal-background, .modal-close', '.close')
-  .forEach(function(el) {
-    el.addEventListener('click', function() {
-      toggleModal(musicModal);
-    });
-  });
-
 const musicModal = document.getElementById('music-modal');
 
 // updateModal take a track name, artist name, cover art image url. and artist image url as arguments
@@ -75,6 +66,15 @@ function updateModal(track, artist, coverArt, artistImage) {
       musicLyrics.innerText = data.result.track.text || 'No Lyrics Found.';
     })
 }
+
+// Close Events
+document
+  .querySelectorAll('.modal-background, .modal-close', '.close')
+  .forEach(function (el) {
+    el.addEventListener('click', function () {
+      toggleModal(musicModal);
+    });
+  });
 
 function createRow(track, year, coverArt, artistArt) {
   const box = document.createElement('div');
@@ -103,7 +103,7 @@ function createRow(track, year, coverArt, artistArt) {
   </figure>`;
 
   box.innerHTML = content;
-  box.addEventListener('click', function() {
+  box.addEventListener('click', function () {
     updateModal(this.getAttribute('data-track'), this.getAttribute('data-year'), this.getAttribute('data-coverArt'), this.getAttribute('data-artistArt'))
     toggleModal(musicModal);
   });
@@ -114,10 +114,10 @@ function createRow(track, year, coverArt, artistArt) {
 const searchInput = document.getElementById('search-input');
 const form = document.getElementById('search-form');
 
-form.addEventListener('submit', function(event) {
+form.addEventListener('submit', function (event) {
   event.preventDefault();
 
-  fetchDiscogsData(searchInput.value).then(function(data) {
+  fetchDiscogsData(searchInput.value).then(function (data) {
     const newform = data.results;
     newform.forEach((element) => {
       const track = element.title;
