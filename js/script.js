@@ -7,6 +7,7 @@ const DISCOGS_QUERYURL = (genre, key, secret) =>
   `https://api.discogs.com/database/search?genre=${genre}&per_page=10&page=1&key=${key}&secret=${secret}`;
 const APISEEDS_QUERYURL = (artist, track, apikey) =>
   `https://orion.apiseeds.com/api/music/lyric/${artist}/${track}?apikey=${apikey}`;
+const musicModal = document.getElementById("music-modal");
 
 function fetchDiscogsData(genre) {
   // We have to append a user-agent as describe in Discogs API Documents
@@ -62,13 +63,6 @@ document
     });
   });
 
-const musicModal = document.getElementById("music-modal");
-const musicBtn = document.getElementById("music-modalBtn");
-
-musicBtn.addEventListener("click", function() {
-  toggleModal(musicModal);
-});
-
 let enterSearch = document.getElementById("search-input");
 const form = document.getElementById("search-form");
 form.addEventListener("submit", function(event) {
@@ -110,6 +104,9 @@ form.addEventListener("submit", function(event) {
         </figure>`;
 
         box.innerHTML = content;
+        box.addEventListener("click", function() {
+          toggleModal(musicModal);
+        });
 
         rows.appendChild(box);
       }
