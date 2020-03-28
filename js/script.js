@@ -3,10 +3,8 @@ const DISCOGS_SECRET = 'MINCKyoSTDujDzWieMQiGeAGOBcEQspu';
 const APISEEDS_APIKEY =
   'ZmB4cTfin1kKUiOgRkoscUXp54GfiVyYe9xCnWhemaOBiQdVors5y17cZmKq36sU';
 
-const DISCOGS_QUERYURL = (genre, key, secret) =>
-  `https://api.discogs.com/database/search?genre=${genre}&per_page=10&page=1&key=${key}&secret=${secret}`;
-const APISEEDS_QUERYURL = (artist, track, apikey) =>
-  `https://orion.apiseeds.com/api/music/lyric/${artist}/${track}?apikey=${apikey}`;
+const DISCOGS_QUERYURL = (genre, key, secret) => `https://api.discogs.com/database/search?genre=${genre}&per_page=10&page=1&key=${key}&secret=${secret}`;
+const APISEEDS_QUERYURL = (artist, track, apikey) => `https://orion.apiseeds.com/api/music/lyric/${artist}/${track}?apikey=${apikey}`;
 
 function fetchDiscogsData(genre) {
   // We have to append a user-agent as describe in Discogs API Documents
