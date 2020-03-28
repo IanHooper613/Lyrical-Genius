@@ -1,4 +1,5 @@
 # LyricalGenius
+[Link to Page](https://ianhooper613.github.io/Lyrical-Genius/)
 It like having a Music Genius in a touch of a button.
 
 LyricalGenius is a music genre finding application.
