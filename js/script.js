@@ -111,15 +111,15 @@ function createRow(track, year, coverArt, artistArt) {
   rows.appendChild(box);
 }
 
-let enterSearch = document.getElementById('search-input');
+const searchInput = document.getElementById('search-input');
 const form = document.getElementById('search-form');
 
 form.addEventListener('submit', function(event) {
   event.preventDefault();
 
-  fetchDiscogsData(enterSearch.value).then(function(data) {
-    const newform = data.results;
-    newform.forEach(element => {
+  fetchDiscogsData(searchInput.value).then(function(data) {
+    const discogData = data.results;
+    discogData.forEach(element => {
       const track = element.title;
       const year = element.year;
       const coverArt = element.cover_image;
