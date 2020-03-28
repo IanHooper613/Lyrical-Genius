@@ -42,7 +42,6 @@ function fetchLyricData(artist, track) {
     redirect: 'follow',
   };
 
-
   return fetch(APISEEDS_QUERYURL(artist, track, APISEEDS_APIKEY), requestOptions)
     .then((response) => response.json())
     .catch((error) => console.error(error));
