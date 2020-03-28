@@ -52,6 +52,13 @@ function toggleModal(element) {
   element.classList.toggle('is-active');
 }
 
+// This emptyChildNode function remove all childNode from the parents.
+function emptyChildNode(el) {
+  [...el.childNodes].forEach(function (element) {
+    element.remove();
+  });
+}
+
 // updateModal take a track name, artist name, cover art image url. and artist image url as arguments
 // NOTICE: Call toggleModal AFTER you update the modal
 function updateModal(track, artist, coverArt, artistImage) {
@@ -105,7 +112,8 @@ document
 // Search Form EventListener
 form.addEventListener('submit', function (event) {
   event.preventDefault();
-
+  
+  emptyChildNode(rows)
   fetchDiscogsData(searchInput.value).then(function (data) {
     const discogData = data.results;
     discogData.forEach((element) => {
