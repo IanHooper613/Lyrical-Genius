@@ -1,10 +1,10 @@
 .footer {
-    background-color: black;
-    position: absolute;
-    bottom: 0;
-    margin-top: 10px;
-    width: 100%;
-  }
+  background-color: black;
+  position: relative;
+  bottom: 0;
+  margin-top: 10px;
+  width: 100%;
+}
 
 .modal-card-subtitle {
   position: absolute;
@@ -46,8 +46,9 @@
   width: auto;
 }
 
-@media screen and (min-width: 769px),print {
-  .modal-card,.modal-content {
+@media screen and (min-width: 769px), print {
+  .modal-card,
+  .modal-content {
     width: 80%;
   }
 }
