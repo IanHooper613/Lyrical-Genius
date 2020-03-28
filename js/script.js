@@ -33,7 +33,6 @@ function fetchDiscogsData(genre) {
     requestOptions,
   )
     .then((response) => response.json())
-    .then((result) => result)
     .catch((error) => console.error(error));
 }
 
