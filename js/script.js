@@ -71,7 +71,7 @@ function updateModal(track, artist, coverArt, artistImage) {
 function createRow(track, year, coverArt, artistArt) {
   const box = document.createElement('div');
 
-  box.className = 'box has-background-black has-text-white';
+  box.className = 'box has-background-dark has-text-white';
   box.setAttribute('data-track', track);
   box.setAttribute('data-year', year);
   box.setAttribute('data-coverArt', coverArt);
