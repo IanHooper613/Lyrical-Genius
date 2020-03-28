@@ -1,7 +1,7 @@
-
 const DISCOGS_KEY = "WcMjRDILhXjDbHNvwBEm";
 const DISCOGS_SECRET = "MINCKyoSTDujDzWieMQiGeAGOBcEQspu";
-const APISEEDS_APIKEY = "ZmB4cTfin1kKUiOgRkoscUXp54GfiVyYe9xCnWhemaOBiQdVors5y17cZmKq36sU";
+const APISEEDS_APIKEY =
+  "ZmB4cTfin1kKUiOgRkoscUXp54GfiVyYe9xCnWhemaOBiQdVors5y17cZmKq36sU";
 
 const DISCOGS_QUERYURL = (genre, key, secret) =>
   `https://api.discogs.com/database/search?genre=${genre}&per_page=10&page=1&key=${key}&secret=${secret}`;
@@ -69,7 +69,6 @@ musicBtn.addEventListener("click", function() {
   toggleModal(musicModal);
 });
 
-
 function createRow(track, artist, coverArt, artistArt) {
   const box = document.createElement("div");
 
@@ -83,7 +82,7 @@ function createRow(track, artist, coverArt, artistArt) {
 
   </div>
   <div class="media-content">
-    <h5 class="trackName">${track}</h5>
+    <h5 class="trackName">${ele.title}</h5>
     <br>
     <h5 class="artistName">${artist}</h5>
   </div>
@@ -97,20 +96,50 @@ function createRow(track, artist, coverArt, artistArt) {
   rows.appendChild(box);
 }
 
-
-let enterSearch = document.getElementById("search-input")
-const form = document.getElementById("search-form")
+let enterSearch = document.getElementById("search-input");
+const form = document.getElementById("search-form");
 form.addEventListener("submit", function(event) {
-  event.preventDefault()
+  event.preventDefault();
 
-fetchDiscogsData (enterSearch.value).then(function(data) {
-  //console.log(data.results)
+  fetchDiscogsData(enterSearch.value).then(function(data) {
+    //console.log(data.results)
 
-  const newform = data.results
-  newform.forEach(element => {
-    console.log(element)
-    
+    const newform = data.results;
+    newform.forEach(element => {
+      console.log(element);
+
+      createRow();
+      function createRow(track, year, coverArt, artistArt) {
+        const box = document.createElement("div");
+
+        track = element.title;
+        year = element.year;
+        coverArt = element.cover_image;
+        artistArt = element.thumb;
+
+        box.className = "box has-background-black has-text-white";
+
+        let content = ` <article class="media">
+        <div class="media-left">
+          <figure class="image is-96x96">
+            <img src="${artistArt}" class="is-rounded" alt="Image">
+          </figure>
+      
+        </div>
+        <div class="media-content">
+          <h5 class="trackName">${track}</h5>
+          <br>
+          <h5 class="artistName">${year}</h5>
+        </div>
+      
+        <figure class="image is-128x128">
+          <img src="${coverArt}" class="" alt="Image">
+        </figure>`;
+
+        box.innerHTML = content;
+
+        rows.appendChild(box);
+      }
+    });
   });
-  
-})
-})
+});
