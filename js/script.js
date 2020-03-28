@@ -85,14 +85,14 @@ form.addEventListener('submit', function(event) {
   fetchDiscogsData(enterSearch.value).then(function(data) {
     const newform = data.results;
     newform.forEach(element => {
-      createRow();
+      const track = element.title;
+      const year = element.year;
+      const coverArt = element.cover_image;
+      const artistArt = element.thumb;
+
+      createRow(track, year, coverArt, artistArt);
       function createRow(track, year, coverArt, artistArt) {
         const box = document.createElement('div');
-
-        track = element.title;
-        year = element.year;
-        coverArt = element.cover_image;
-        artistArt = element.thumb;
 
         box.className = 'box has-background-black has-text-white';
         box.setAttribute('data-track', track);
