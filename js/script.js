@@ -76,6 +76,41 @@ function updateModal(track, artist, coverArt, artistImage) {
     })
 }
 
+function createRow(track, year, coverArt, artistArt) {
+  const box = document.createElement('div');
+
+  box.className = 'box has-background-black has-text-white';
+  box.setAttribute('data-track', track);
+  box.setAttribute('data-year', year);
+  box.setAttribute('data-coverArt', coverArt);
+  box.setAttribute('data-artistArt', artistArt);
+
+  const content = ` <article class="media">
+  <div class="media-left">
+    <figure class="image is-96x96">
+      <img src="${artistArt}" class="is-rounded" alt="Image">
+    </figure>
+
+  </div>
+  <div class="media-content">
+    <h5 class="trackName">${track}</h5>
+    <br>
+    <h5 class="artistName">${year}</h5>
+  </div>
+
+  <figure class="image is-128x128">
+    <img src="${coverArt}" class="" alt="Image">
+  </figure>`;
+
+  box.innerHTML = content;
+  box.addEventListener('click', function() {
+    updateModal(this.getAttribute('data-track'), this.getAttribute('data-year'), this.getAttribute('data-coverArt'), this.getAttribute('data-artistArt'))
+    toggleModal(musicModal);
+  });
+
+  rows.appendChild(box);
+}
+
 let enterSearch = document.getElementById('search-input');
 const form = document.getElementById('search-form');
 
@@ -91,40 +126,6 @@ form.addEventListener('submit', function(event) {
       const artistArt = element.thumb;
 
       createRow(track, year, coverArt, artistArt);
-      function createRow(track, year, coverArt, artistArt) {
-        const box = document.createElement('div');
-
-        box.className = 'box has-background-black has-text-white';
-        box.setAttribute('data-track', track);
-        box.setAttribute('data-year', year);
-        box.setAttribute('data-coverArt', coverArt);
-        box.setAttribute('data-artistArt', artistArt);
-
-        let content = ` <article class="media">
-        <div class="media-left">
-          <figure class="image is-96x96">
-            <img src="${artistArt}" class="is-rounded" alt="Image">
-          </figure>
-      
-        </div>
-        <div class="media-content">
-          <h5 class="trackName">${track}</h5>
-          <br>
-          <h5 class="artistName">${year}</h5>
-        </div>
-      
-        <figure class="image is-128x128">
-          <img src="${coverArt}" class="" alt="Image">
-        </figure>`;
-
-        box.innerHTML = content;
-        box.addEventListener('click', function() {
-          updateModal(this.getAttribute('data-track'), this.getAttribute('data-year'), this.getAttribute('data-coverArt'), this.getAttribute('data-artistArt'))
-          toggleModal(musicModal);
-        });
-
-        rows.appendChild(box);
-      }
     });
   });
 });
