@@ -49,7 +49,7 @@ function fetchLyricData(artist, track) {
     .catch((error) => console.error(error));
 }
 
-// Modal
+// This will toggle the modal visibility
 function toggleModal(element) {
   document.documentElement.classList.toggle('is-clipped');
   element.classList.toggle('is-active');
@@ -69,6 +69,7 @@ function updateModal(track, artist, coverArt, artistImage) {
     })
 }
 
+// This create all the row and take a track year, coverArt, artistArt
 function createRow(track, year, coverArt, artistArt) {
   const box = document.createElement('div');
 
@@ -104,7 +105,7 @@ function createRow(track, year, coverArt, artistArt) {
   rows.appendChild(box);
 }
 
-// Close Events
+// Close Modal Events
 document
   .querySelectorAll('.modal-background, .modal-close', '.close')
   .forEach(function (el) {
@@ -113,6 +114,7 @@ document
     });
   });
 
+// Search Form EventListener
 form.addEventListener('submit', function (event) {
   event.preventDefault();
 
