@@ -11,7 +11,6 @@ const searchInput = document.getElementById('search-input');
 const form = document.getElementById('search-form');
 const musicModal = document.getElementById('music-modal');
 const musicCoverArt = document.getElementById('modal-cover-art');
-const musicArtistImage = document.getElementById('modal-artist-image');
 const musicTrack = document.getElementById('modal-track');
 const musicArtist = document.getElementById('modal-artist');
 const musicLyrics = document.getElementById('music-lyrics');
@@ -57,7 +56,6 @@ function toggleModal(element) {
 // NOTICE: Call toggleModal AFTER you update the modal
 function updateModal(track, artist, coverArt, artistImage) {
   musicCoverArt.setAttribute('src', coverArt || '');
-  musicArtistImage.setAttribute('src', artistImage || '');
   musicTrack.textContent = track || 'Failed to get track name';
   musicArtist.textContent = artist || 'Failed to get artist name';
 
